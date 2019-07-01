@@ -1,0 +1,11 @@
+{
+  "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb-base"],
+  "plugins": ["react", "react-native"],
+  "parser": "babel-eslint",
+  "ecmaFeatures": {
+    "jsx": true,
+  },
+  "rules": {
+    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }]
+  }
+}
