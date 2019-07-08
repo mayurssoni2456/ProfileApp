@@ -3,7 +3,7 @@
 This app demonstrates the code structure of React Native App with New React Key Features
 
 <b>Key Highlights of the App</b> <br>
-    1. Access to React features such as state, component lifecycle with use of classes<br>
+    1. Access to React features such as state, component lifecycle without use of class component<br>
     2. Use of functional component which helps in improving the performance and bundle size<br>
     3. Use of Hooks - useState, useDispatch, etc.<br>
     4. Unit test with Jest<br>
