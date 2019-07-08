@@ -8,10 +8,10 @@ const INITIAL_STATE = {
     contact: {
       cell: '9833565771',
       email: 'john@doe.com',
-      postalcode: '480100',
+      postalcode: '1008 NL',
       houseNumber: '4118',
       addition: '',
-      street: 'Parivartan ghatkopar',
+      street: 'Rock street',
       city: 'Amsterdam',
     },
   },

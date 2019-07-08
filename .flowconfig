@@ -19,6 +19,12 @@
 ; Ignore metro
 .*/node_modules/metro/.*
 
+[untyped]
+.*/node_modules/react-native
+.*/Libraries/react-native/React.js
+.*/Libraries/react-native/ReactNative.js
+.*/node_modules/jest-runtime/build/__tests__/.*
+
 [include]
 
 [libs]
@@ -66,4 +72,4 @@ suppress_comment=\\(.\\|\n\\)*\\$FlowFixedInNextDeploy
 suppress_comment=\\(.\\|\n\\)*\\$FlowExpectedError
 
 [version]
-^0.92.0
+^0.102.0

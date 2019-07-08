@@ -1,39 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
-import { Platform, Button, Text, View } from 'react-native';
+import { View } from 'react-native';
 import ProfileHeader from './ProfileHeader';
 import ContactDetails from './ProfileDetails';
-import { ApplicationStyle } from '../../Themes';
+import { ApplicationStyle } from '@themes/index';
 
-class Profile extends Component {
-  // static navigationOptions = navigation => ({
-  //   title: 'Contacts',
-  // });
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
+class Profile extends Component<Props> {
   onEditContact = () => {
     this.props.navigation.navigate('contact', { contact: this.props.contact });
   };
 
   render() {
-    const { OnUpdateContact } = this;
-    const { contact } = this.props;
+    const { profile } = this.props;
 
     return (
-      <View style={ApplicationStyle.viewPadding}>
-        <ProfileHeader />
-        <ContactDetails onEditContact={this.onEditContact} contact={contact} />
+      <View>
+        <ProfileHeader profile={profile} />
+        <ContactDetails
+          onEditContact={this.onEditContact}
+          contact={profile.contact}
+        />
       </View>
     );
   }
 }
 const mapStateToProps = state => {
   return {
-    contact: state.profileReducer.profile.contact,
+    profile: state.profileReducer.profile,
   };
 };
 

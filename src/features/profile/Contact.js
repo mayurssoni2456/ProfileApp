@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
-import { useCallback, useDispatch, useSelector } from 'react-redux';
-import { Text, View, ScrollView } from 'react-native';
+import { View } from 'react-native';
+import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { ApplicationStyle, Colors } from '../../Themes';
-import { Input, ButtonTitle } from '../../common';
-import validator from 'validator';
-import { editContactDetails } from '../../actions/profileActions';
+import { ApplicationStyle } from '@themes/index';
+import { Input, ButtonTitle } from '@common/index';
+import { editContactDetails } from '@actions/profileActions';
+import {
+  isMobilePhone,
+  isEmail,
+  isPostalCode,
+  isEmpty,
+} from '@helpers/Validator';
+import Strings from '@localization/StringEN';
 
-const Contact = props => {
+const { fontSize, padding } = ApplicationStyle;
+const Contact = (props: Props) => {
   const { contact } = props.navigation.state.params;
   const { navigation } = props;
 
@@ -26,13 +34,7 @@ const Contact = props => {
 
   const dispatch = useDispatch();
 
-  validate = () => {
-    setCellValid(validator.isMobilePhone(cell));
-    setEmailValid(validator.isEmail(email));
-    setPostalCodeValid(validator.isPostalCode(postalcode, 'NL'));
-    setCityValid(!validator.isEmpty(city));
-
-    // updateContactDetails();
+  const onPress = any => {
     dispatch(
       editContactDetails({
         cell,
@@ -48,7 +50,7 @@ const Contact = props => {
     navigation.goBack();
   };
 
-  onChangeText = (key, val) => {
+  const onChangeText = (key, val) => {
     switch (key) {
       case 'cell':
         setCell(val);
@@ -77,68 +79,83 @@ const Contact = props => {
         setCity(val);
         break;
     }
+
+    setTimeout(() => {
+      validate();
+    }, 10);
   };
 
+  validate = () => {
+    setCellValid(isMobilePhone(cell));
+    setEmailValid(isEmail(email));
+    setPostalCodeValid(isPostalCode(postalcode, 'NL'));
+    setCityValid(!isEmpty(city));
+  };
+
+  const { contactUpdate } = Strings;
   return (
     <KeyboardAwareScrollView>
       <View
         style={[
           ApplicationStyle.card,
-          { borderBottomWidth: 0, paddingBottom: 10 },
+          { borderBottomWidth: 0, paddingBottom: padding.small },
         ]}>
-        <Text style={ApplicationStyle.sectionTitle}>Contact Details</Text>
         <Input
-          title={'Telefoonnummer'}
+          title={Strings.telephone}
           value={cell}
-          onChangeText={val => this.onChangeText('cell', val)}
+          onChangeText={val => onChangeText('cell', val)}
           isValid={cellValid}
         />
         <Input
-          title={'E-mailadres'}
+          title={Strings.emailAddress}
           value={email}
-          onChangeText={val => this.onChangeText('email', val)}
+          onChangeText={val => onChangeText('email', val)}
           isValid={emailValid}
         />
         <Input
-          title={'Postcode'}
+          title={Strings.postcode}
           value={postalcode}
           isValid={postalCodeValid}
-          onChangeText={val => this.onChangeText('postalcode', val)}
+          onChangeText={val => onChangeText('postalcode', val)}
         />
 
         <View style={{ flexDirection: 'row' }}>
           <Input
             style={{ marginRight: 20 }}
-            title={'house Number'}
+            title={Strings.houseNumber}
             value={houseNumber}
-            onChangeText={val => this.onChangeText('housenumber', val)}
+            onChangeText={val => onChangeText('housenumber', val)}
           />
           <Input
-            title={'Toevoeging'}
+            title={Strings.addition}
             value={addition}
-            onChangeText={val => this.onChangeText('addition', val)}
+            onChangeText={val => onChangeText('addition', val)}
           />
         </View>
         <Input
-          title={'Straat'}
+          title={Strings.street}
           value={street}
-          onChangeText={val => this.onChangeText('street', val)}
+          onChangeText={val => onChangeText('street', val)}
         />
         <Input
-          title={'Plaats'}
+          title={Strings.city}
           value={city}
           isValid={cityValid}
-          onChangeText={val => this.onChangeText('city', val)}
+          onChangeText={val => onChangeText('city', val)}
         />
 
         <ButtonTitle
-          title={'Contactgegevens bijwerken'}
+          disabled={cellValid && emailValid && postalCodeValid && cityValid}
+          title={contactUpdate}
           style={{ margin: 20, justifyContent: 'center' }}
-          onPress={this.validate}
+          onPress={onPress}
         />
       </View>
     </KeyboardAwareScrollView>
   );
 };
 
+Contact.propTypes = {
+  onPress: PropTypes.func,
+};
 export default Contact;

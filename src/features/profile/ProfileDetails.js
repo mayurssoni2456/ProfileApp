@@ -1,16 +1,22 @@
-import React, { Component } from 'react';
-import { Text, View } from 'react-native';
-import { ApplicationStyle } from '../../Themes';
-import { ButtonTitleIcon } from '../../common';
-import { Icons } from '../../helpers/imageMapper';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const TextComponent = ({ value }) => (
+import { Text, View } from 'react-native';
+import { ApplicationStyle } from '@themes/index';
+import { ButtonTitleIcon } from '@common/index';
+import { Icons } from '@helpers/imageMapper';
+import Strings from '@localization/StringEN';
+const { fontSize, padding } = ApplicationStyle;
+
+const TextComponent = ({ value, id = null }) => (
   <View>
-    <Text style={ApplicationStyle.text}>{value}</Text>
+    <Text id={id} style={ApplicationStyle.text}>
+      {value}
+    </Text>
   </View>
 );
 
-export default function ContactDetails({ onEditContact, contact }) {
+export default function ProfileDetails({ onEditContact, contact }) {
   formatAddress = contact => {
     const arrAddress = [contact.houseNumber, contact.addition, contact.street];
     const address = arrAddress.filter(_ => _).join(', ');
@@ -18,16 +24,18 @@ export default function ContactDetails({ onEditContact, contact }) {
   };
 
   return (
-    <View style={{ paddingBottom: 20 }}>
+    <View style={{ paddingBottom: padding.medium }}>
       <View style={ApplicationStyle.card}>
-        <Text style={ApplicationStyle.sectionTitle}>Contact Details</Text>
+        <Text style={ApplicationStyle.sectionTitle}>
+          {Strings.contactDetails}
+        </Text>
         <TextComponent value={contact.cell} />
         <TextComponent value={contact.email} />
-        <TextComponent value={formatAddress(contact)} />
+        <TextComponent id={'address'} value={formatAddress(contact)} />
         <TextComponent value={contact.city} />
       </View>
       <ButtonTitleIcon
-        title={'Update Contact Details'}
+        title={Strings.updateContactDetails}
         style={{ margin: 20 }}
         onPress={onEditContact}
         icon={Icons.rightArrow}
@@ -35,3 +43,7 @@ export default function ContactDetails({ onEditContact, contact }) {
     </View>
   );
 }
+
+ProfileDetails.propTypes = {
+  contact: PropTypes.object,
+};

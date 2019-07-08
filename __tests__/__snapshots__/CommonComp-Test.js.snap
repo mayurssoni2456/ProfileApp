@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonTitle Component Testing 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "borderColor": "rgba(188,188,188,1)",
+        "borderRadius": 3,
+        "borderWidth": 1,
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "padding": 10,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "justifyContent": "center",
+        "opacity": 1,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "borderRadius": 2,
+          "color": "rgba(83,83,83,1)",
+          "flexDirection": "row",
+          "fontSize": 18,
+          "fontWeight": "600",
+        }
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`ButtonTitleIcon Component Testing 1`] = `
+<View
+  style={
+    Array [
+      undefined,
+    ]
+  }
+>
+  <View
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "borderColor": "rgba(188,188,188,1)",
+        "borderRadius": 3,
+        "borderWidth": 1,
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "opacity": 1,
+        "padding": 10,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "borderRadius": 2,
+          "color": "rgba(83,83,83,1)",
+          "flexDirection": "row",
+          "fontSize": 18,
+          "fontWeight": "600",
+        }
+      }
+    />
+    <Image
+      source={
+        Object {
+          "testUri": "../../../src/assets/rightArrow.png",
+        }
+      }
+      style={
+        Object {
+          "height": 22,
+          "width": 10,
+        }
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`Input Component Testing 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "paddingVertical": 10,
+      },
+      undefined,
+    ]
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "rgba(83,83,83,1)",
+        "fontSize": 16,
+        "paddingBottom": 10,
+      }
+    }
+  />
+  <TextInput
+    allowFontScaling={true}
+    rejectResponderTermination={true}
+    style={
+      Object {
+        "borderBottomColor": "rgba(188,188,188,1)",
+        "borderBottomWidth": 1,
+        "fontSize": 16,
+        "paddingVertical": 5,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+</View>
+`;

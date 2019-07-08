@@ -2,10 +2,11 @@ import React from 'react';
 import { TouchableOpacity, View, Text } from 'react-native';
 import { ApplicationStyle } from '../Themes';
 
-export default function ButtonTitle({ title, onPress, style }) {
+export default function ButtonTitle({ title, onPress, style, disabled }) {
   return (
     <View style={[ApplicationStyle.navButton, style]}>
       <TouchableOpacity
+        disabled={!disabled}
         style={[{ justifyContent: 'center' }]}
         onPress={onPress}>
         <Text style={ApplicationStyle.navTextButton}>{title}</Text>
