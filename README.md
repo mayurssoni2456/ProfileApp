@@ -14,5 +14,8 @@ This app demonstrates the code structure of React Native App with New React Key 
   2. Run npm install at project path
   3. Run react-native run-ios 
   
+  Android
+    3. Run react-native run-android 
+  
   
   
