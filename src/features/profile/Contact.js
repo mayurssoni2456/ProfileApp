@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -34,7 +34,7 @@ const Contact = (props: Props) => {
 
   const dispatch = useDispatch();
 
-  const onPress = any => {
+  onPress = any => {
     dispatch(
       editContactDetails({
         cell,
@@ -50,7 +50,7 @@ const Contact = (props: Props) => {
     navigation.goBack();
   };
 
-  const onChangeText = (key, val) => {
+  onChangeText = (key, val) => {
     switch (key) {
       case 'cell':
         setCell(val);

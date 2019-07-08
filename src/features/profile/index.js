@@ -7,7 +7,9 @@ import { ApplicationStyle } from '@themes/index';
 
 class Profile extends Component<Props> {
   onEditContact = () => {
-    this.props.navigation.navigate('contact', { contact: this.props.contact });
+    this.props.navigation.navigate('contact', {
+      contact: this.props.profile.contact,
+    });
   };
 
   render() {
