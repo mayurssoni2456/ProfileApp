@@ -6,13 +6,13 @@ const INITIAL_STATE = {
     lastName: 'Doe',
     id: '13619839173',
     contact: {
-      cell: '9833565771',
+      cell: '1232123132',
       email: 'john@doe.com',
-      postalcode: '1008 NL',
+      postalcode: '1008',
       houseNumber: '4118',
       addition: '',
       street: 'Rock street',
-      city: 'Amsterdam',
+      city: 'New York',
     },
   },
 };

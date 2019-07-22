@@ -8,13 +8,13 @@ const AppStack = createStackNavigator(
     profile: {
       screen: Profile,
       navigationOptions: ({ navigation }) => ({
-        title: 'Gegevens',
+        title: 'Contact',
       }),
     },
     contact: {
       screen: Contact,
       navigationOptions: ({ navigation }) => ({
-        title: 'Cotactsgegevens Wijzigen',
+        title: 'Update Contact',
       }),
     },
   },
